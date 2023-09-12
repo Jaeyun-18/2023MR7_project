@@ -145,7 +145,7 @@ with mp_pose.Pose(min_detection_confidence = 0.5, min_tracking_confidence = 0.5)
         
         cv2.imshow("Mediapipe Video(front)", image_F)
         cv2.imshow("Mediapipe Video(left)", image_L)
-        cv2.imshow("Mediapipe Video(right)",image_R)
+        #cv2.imshow("Mediapipe Video(right)",image_R)
 
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
