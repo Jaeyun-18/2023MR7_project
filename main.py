@@ -14,6 +14,7 @@ while left.is_open():
     left_points, left_img = left.run_cycle(True)
     front_points, front_img = front.run_cycle(True)
 
+    #좌표 마킹
     S1_F = front_points[0]
     S2_F = front_points[1]
     E1_F = front_points[2]
