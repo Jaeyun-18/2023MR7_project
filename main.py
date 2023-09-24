@@ -1,8 +1,8 @@
 import cv2
 from mp_handler import *
 
-left_landmarks = landmark_translate(True, ("S1", "E1", "W1"))
-
+left_landmarks = landmark_translate(True, ("S1", "E1", "W1", "H1"))
+print(left_landmarks)
 left = PoseGetter(4, "left", left_landmarks)
 center = PoseGetter(0, "center", (11, 12, 13, 14, 15, 16, 23, 24))
 

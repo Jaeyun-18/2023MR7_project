@@ -52,7 +52,7 @@ def landmark_translate(str_to_num, landmarks):
         "W1": 15, "W2": 16, "H1": 23, "H2": 24
     }
     inv_landmark_dict = {v: k for k, v in landmark_dict.items()}
-    ret = ()
+    ret = []
     if str_to_num:
         for lm in landmarks:
             ret.append(landmark_dict[lm])
