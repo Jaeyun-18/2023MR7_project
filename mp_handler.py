@@ -33,7 +33,7 @@ class PoseGetter:
         if landmarks != None:
             for k in self.wanted_points:
                 lm = landmarks.landmark[k]
-                ret.append([lm.x, lm.y])
+                ret.append([lm.x, -lm.y])
         ret = np.array(ret)
 
         if show_vid:
