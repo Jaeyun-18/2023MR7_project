@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+import numpy as np
 
 
 class PoseGetter:
@@ -33,6 +34,7 @@ class PoseGetter:
             for k in self.wanted_points:
                 lm = landmarks.landmark[k]
                 ret.append([lm.x, lm.y])
+        ret = np.array(ret)
 
         if show_vid:
             image.flags.writeable = True
