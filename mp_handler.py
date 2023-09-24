@@ -44,3 +44,20 @@ class PoseGetter:
                 landmark_drawing_spec=self.mp_drawing_styles.get_default_pose_landmarks_style())
 
         return ret, image
+
+
+def landmark_translate(str_to_num, landmarks):
+    landmark_dict = {
+        "S1": 11, "S2": 12, "E1": 13, "E2": 14,
+        "W1": 15, "W2": 16, "H1": 23, "H2": 24
+    }
+    inv_landmark_dict = {v: k for k, v in landmark_dict.items()}
+    ret = ()
+    if str_to_num:
+        for lm in landmarks:
+            ret.append(landmark_dict[lm])
+    else:
+        for lm in landmarks:
+            ret.append(inv_landmark_dict[lm])
+
+    return ret
