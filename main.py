@@ -6,7 +6,7 @@ left_landmarks = landmark_translate(True, ["S1", "S2", "E1", "W1"])
 front_landmarks = landmark_translate(
     True, ["S1", "S2", "E1", "E2", "W1", "W2", "H1", "H2"])
 
-left = PoseGetter(4, "left", left_landmarks)
+left = PoseGetter(3, "left", left_landmarks)
 front = PoseGetter(0, "front", front_landmarks)
 
 
