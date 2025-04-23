@@ -1,0 +1,32 @@
+1. take_picture.py 실행
+    a. ls /dev/video* 로 2개의 카메라 port 확인
+    b. 대상이 바라보는 관객 기준으로 left, right 카메라를 정의한다
+    c. left_cam, right_cam, both_cam 의 port를 알맞게 수정한다.
+    d. 
+        left_cam = Cameras({(왼쪽 카메라 포트 번호): 'left_camera'}, "cali_imgs/left_imgs/")
+        left_cam.run()
+        
+        # right_cam = Cameras({(오른쪽 카메라 포트 번호): 'right_camera'}, "cali_imgs/right_imgs/")
+        # right_cam.run()
+
+        # both_cam = Cameras({(오른쪽 카메라 포트 번호): 'right_camera', (왼쪽 카메라 포트 번호): 'left_camera'},"cali_imgs/sync_imgs/")
+        # both_cam.run()
+
+        처럼 left_cam을 제외하고 나머지를 주석처리하여 코드를 수정한다.
+    e. 캘리브레이션 판을 들고 카메라를 바라본다. 이후, 약간씩 기울이며 c를 눌러 사진을 촬영한다. d 를 누르면 종료이다. (단, 기울일 때 캘리브레이션 판이 바닥선과 평행함을 유지해야한다.)
+    f. right_cam, both_cam에 대해 각각 위 과정을 수행한다.
+
+2. stereo_camera.py 실행
+    a. 코드를 실행한다.
+    b. space봐를 누르며 캘리브레이션 결과를 육안으로 확인한다. 위에서 아래로 갈 때, 왼쪽에서 오른쪽 방향으로 이동(Z모양)이 되어야한다. 아래가 빨간선이다.
+    c. 코드 실행 이후 가장 아랫줄에 cv.stereoCalibrate() 가 뜬다. 0.3 이하여야 좋으며, 작을수록 좋다.
+
+3. new_main.py 실행
+    a. 모션 카피 휴머노이드와 U2D2로 연결한다. 
+    b. 포트를 수정한다.
+        right = PoseGetter((오른쪽 카메라 포트 번호), "right", landmarks, [640, 480])
+        left = PoseGetter((왼쪽 카메라 포트 번호), "left", landmarks, [640, 480])
+    c. 사람이 인식되어야 화면이 띄며 작동 가능하다. 사람이 인식되면 자동으로 움직인다.
+    d. (optional) echo 1 | sudo tee /sys/bus/usb-serial/devices/ttyUSB0/latency_timer -> usb 통신 속도 최소화 -> 반응 속도 상승
+    e. (optional) 바뀐 휴머노이드는 new_main2.py 실행
+
